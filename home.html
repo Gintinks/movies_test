@@ -8,74 +8,105 @@
     <title>Document</title>
 </head>
 <style>
-
-    .card {
-        /* Add shadows to create the "card" effect */
-        flex: auto;
-        background-color: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-    }
-
-    /* On mouse-over, add a deeper shadow */
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    html,
-    body,
-    section {
-        height: 100%;
-    }
-
     body {
-        color: rgb(0, 0, 0);
-        font-family: sans-serif;
-        font-size: 1.25rem;
+        background-color: aliceblue;
     }
 
-    div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-        margin: 0 0 0.75rem 0;
-    }
-
-    /* Pattern styles */
     .container {
         display: flex;
     }
 
     .left-half {
-        flex: 120px;
+        width: 20%;
         padding: 1rem;
     }
 
     .right-half {
-        background-color: aqua;
+        width: 80%;
         flex: auto;
         padding: 1rem;
     }
+
+    #card-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        position: relative;
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 2rem;
+        flex: 1 0 15%;
+        /* explanation below */
+        border-radius: 4px;
+        border-top: 0px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
+
+    img {
+        border-radius: 4px 4px 0px 0px;
+        max-width: 100%;
+    }
+
+    .card-desc {
+        height: 72px;
+        margin: 8px;
+    }
+
+    .container-box {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        background-color: white;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    .dot {
+        height: 25px;
+        width: 25px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        bottom: 82px;
+        right: 136px;
+    }
 </style>
-<h1>Popular Movies</h1>
 
 <body>
-
+    <h1 style="margin-left: 12px;">Popular Movies</h1>
     <section class="container">
         <div class="left-half">
-            <button onclick="handleSortASC()">asc</button>
-            <button onclick="handleSortDES()">des</button>
+            <div class="container-box">
+                <div
+                    style="padding: 8px; display: flex; font-weight: bold; justify-content: space-between; border-bottom: solid rgb(215, 215, 215);">
+                    <p>Sort</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4l-6 6Z" />
+                    </svg>
+                </div>
+                <div style="padding: 12px;">
+                    <p style="color: gray; margin-bottom:4px;">Sort Results By</p>
+                    <select style="width: 100%; padding: 4px; background-color: rgb(187, 203, 218); border-radius: 4px;"
+                        id="selectBox" onchange='handleSortASC(value)'>
+                        <option value="1">Popularity Descending</option>
+                        <option value="2">Popularity Ascending</option>
+                    </select>
+                </div>
+            </div>
+
         </div>
         <div class="right-half">
-            <div id="accordion">
-
+            <div id="card-columns">
             </div>
         </div>
     </section>
+
 
 </body>
 

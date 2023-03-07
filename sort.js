@@ -4,42 +4,70 @@ const array_mov = [
         "picture": "plane.jpg",
         "title": "Plane",
         "rating": 76,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "releasedate": "Feb 01, 2021"
     },
     {
         "movie_id": 2,
         "picture": "theboys.jpg",
         "title": "The Boys",
         "rating": 62,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "releasedate": "Feb 01, 2021"
     },
     {
         "movie_id": 3,
         "picture": "tlor.jpg",
         "title": "The Lord of the Rings: The Return of the King",
         "rating": 89,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "releasedate": "Feb 01, 2021"
     },
     {
         "movie_id": 4,
         "picture": "godfather.jpg",
         "title": "The Godfather",
-        "rating": 41,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "rating": 99,
+        "releasedate": "Feb 01, 2021"
     },
     {
         "movie_id": 5,
         "picture": "bandit.jpg",
         "title": "Bandit",
         "rating": 69,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "releasedate": "Feb 01, 2021"
     },
     {
         "movie_id": 6,
         "picture": "megan.jpg",
         "title": "Megan",
         "rating": 50,
-        "releasedate": "1971-08-01T00:00:00+00:00"
+        "releasedate": "Feb 01, 2021"
+    },
+    {
+        "movie_id": 7,
+        "picture": "aot.jpg",
+        "title": "Attack on Titan",
+        "rating": 93,
+        "releasedate": "Mar 01, 2013"
+    },
+    {
+        "movie_id": 8,
+        "picture": "pupl.jpg",
+        "title": "Pulp fiction",
+        "rating": 85,
+        "releasedate": "Feb 01, 2021"
+    },
+    {
+        "movie_id": 9,
+        "picture": "mandalorian.jpg",
+        "title": "The Mandalorian",
+        "rating": 78,
+        "releasedate": "Feb 01, 2021"
+    },
+    {
+        "movie_id": 10,
+        "picture": "tlou.jpg",
+        "title": "The Last of Us",
+        "rating": 87,
+        "releasedate": "Feb 01, 2021"
     },
 
 ];
@@ -54,72 +82,43 @@ const sortMovies = (movies, sortDirection) => {
     return sortedMovies;
 }
 
-const handleSortASC = () => {
-    document.getElementById("accordion").innerHTML = "";
-    const container = document.getElementById('accordion');
-    data = sortMovies(array_mov, 'asc');
+const handleSortASC = (num) => {
+    document.getElementById("card-columns").innerHTML = "";
+    const container = document.getElementById('card-columns');
+    if (num === "1") {
+        data = sortMovies(array_mov, 'asc');
+    } else {
+        data = sortMovies(array_mov, 'des');
+    }
     data.forEach((result) => {
         // Create card element
         const card = document.createElement('div');
         card.classList = 'card-body';
 
-        // <h5 class="mb-0">
-        //     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-${result.movie_id}" aria-expanded="true" aria-controls="collapse-${result.movie_id}">
-
-        //     </button>
-        // </h5>
-        // Construct card content
         const content = `
           <div class="card">
-            <div class="card-header" id="heading-${result.movie_id}">
-                ....
-            </div>
-        
-            <div id="collapse-${result.movie_id}" class="collapse show" aria-labelledby="heading-${result.movie_id}" data-parent="#accordion">
+            <div id="collapse-${result.movie_id}" class="collapse show" aria-labelledby="heading-${result.movie_id}" data-parent="#card-columns">
                 <div class="card-body">
-                <img style="width: 150px;" src=${result.picture} alt="" srcset="">
-                <h5>${result.title}</h5>
-                <p>${result.releasedate}</p>
-                <p>${result.rating}</p>
+                <img  src=${result.picture} alt="" srcset="">
+                <div class="card-desc">
+                    <p style="font-size: 1.0rem;font-weight: bold;">${result.title}</p>
+                    <p style="font-size: 1.0rem; color: gray;">${result.releasedate}</p>
+                </div>
                 </div>
             </div>
-          </div>
-        `;
-
-        // Append newyly created card element to the container
-        container.innerHTML += content;
-    })
-}
-const handleSortDES = () => {
-    document.getElementById("accordion").innerHTML = "";
-    const container = document.getElementById('accordion');
-    data = sortMovies(array_mov, 'des');
-    data.forEach((result) => {
-        // Create card element
-        const card = document.createElement('div');
-        card.classList = 'card-body';
-
-
-        const content = `
-          <div class="card">
-            <div class="card-header" id="heading-${result.movie_id}">
-                ....
+            <div class="dot">
+            <p style="color: white; display: flex; align-items:center;
+            justify-content:center;">
+            ${result.rating}
+            </p>
             </div>
-        
-            <div id="collapse-${result.movie_id}" class="collapse show" aria-labelledby="heading-${result.movie_id}" data-parent="#accordion">
-                <div class="card-body">
-                <img style="width: 150px;" src=${result.picture} alt="" srcset="">
-                <h5>${result.title}</h5>
-                <p>${result.releasedate}</p>
-                <p>${result.rating}</p>
-                </div>
-            </div>
-          </div>
-        `;
+        </div>
+            `;
 
-        // Append newyly created card element to the container
+        // <p>${result.rating}</p>
         container.innerHTML += content;
     })
 }
 
-handleSortASC()
+
+handleSortASC("1")
