@@ -99,7 +99,7 @@ const handleSortASC = (num) => {
           <div class="card">
             <div id="collapse-${result.movie_id}" class="collapse show" aria-labelledby="heading-${result.movie_id}" data-parent="#card-columns">
                 <div class="card-body">
-                <img  src=${result.picture} alt="" srcset="">
+                <img  src="img/${result.picture}" alt="" srcset="">
                 <div class="card-desc">
                     <p style="font-size: 1.0rem;font-weight: bold;">${result.title}</p>
                     <p style="font-size: 1.0rem; color: gray;">${result.releasedate}</p>
